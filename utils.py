@@ -101,22 +101,22 @@ def violent_pyt():
 
         except:
             continue
-            
+
 path = "webdriver.webkitgtk"
 
 def getit(obj, path):
     # finite num iter
-    
+
     if len(path.split()) > 1:
         sub = path.split()[0]
         obj = getattr(obj, sub)
 
         return getit(obj, sub, path)
-    
+
     else:
         return obj
 
-    
+
 # getit(selenium, path)
 
 def get_next_sib(element, driver):
@@ -139,3 +139,23 @@ def rect2tup(rect):
     return tuple(
         map(lambda x: x * 2,
             [rect['x'], rect['y'], rect['width'], rect['height']]))
+
+
+def data_iter(data, batch_size):
+    i = int(batch_size)
+
+    while i < len(data):
+        yield data[i - batch_size:i]
+        i += batch_size
+
+
+# cnt = 0
+# for bh in gen(data, 100):
+#     cnt += 1
+#     print(bh)
+#     if cnt > 3:
+#         break
+
+# o = gen(data, 100)
+
+# next(o)

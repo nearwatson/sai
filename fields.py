@@ -1,3 +1,16 @@
+import jieba, json, os, re, sys, time
+from datetime import datetime
+import numpy as np
+
+import torch
+import torch.nn as nn
+
+
+from nlp_db import nlp_db
+
+from utils import *
+
+
 class Parms():
     def __init__(self, ):
         self.max_enc_num = 50
@@ -9,9 +22,13 @@ class Parms():
         self.batch_size = 64
         self.batch_size = 5
         self.n_sent = 5
+        self.vocab_path = ''
 
 
 class Semantic():
+    """
+    special token such as sos, eos and etc
+    """
     def __init__(self, ):
         self.INIT_TOKEN = '<sos>'
         self.EOS_TOKEN = '<eos>'
@@ -61,7 +78,7 @@ class Vocab():
             else:
                 return self.vocab_dict['<unk>']
         else:
-            return self.vocab_lst[key]
+            return self.vocab_list[key]
 
     def _make_vocab(self, ):
         pass
@@ -107,3 +124,25 @@ class Field():
 field_process = Field(vocab, preprocess=lambda sent: sent.strip().split())
 
 field_process('hello Hebe, where is your husband? \t \n')
+
+
+
+def _make_vocab(json_file, vocab_path = args.vocab_path, thres=2):
+    word_dict = {}
+    with open(json_file, "r", encoding='utf-8') as f:
+        for l in f.readlines():
+            for token in list(jieba.cut(json.loads(l)['sentence'])):
+                if token not in word_dict:
+                    word_dict[token] = 0
+                else:
+                    word_dict[token] += 1
+
+    if not os.path.isfile(vocab_path):
+        open(vocab_path,'a').close()
+
+    with open(vocab_path, 'w') as f:
+        for k, v in word_dict.items():
+            if v > thres:
+                print(k, file=f)
+
+# _make_vocab(json_file, vocab_path = args.vocab_path, thres=2)

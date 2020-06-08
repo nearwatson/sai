@@ -1,6 +1,0 @@
-2020-05-28 15:17:16,447 : INFO : __main__ : inputs shapetorch.Size([5, 20])
-2020-05-28 15:17:16,454 : INFO : __main__ : emb shape torch.Size([5, 20, 128])
-2020-05-28 15:17:16,492 : INFO : __main__ : lstm shape torch.Size([5, 20, 64])
-2020-05-28 15:17:16,494 : INFO : __main__ : fc shape torch.Size([5, 20, 10])
-2020-05-28 15:17:16,495 : INFO : __main__ : softmax shapetorch.Size([5, 20, 10])
-2020-05-28 15:17:16,498 : INFO : __main__ : result:
