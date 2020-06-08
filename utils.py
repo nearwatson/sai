@@ -4,6 +4,7 @@ from datetime import datetime
 from datetime import timedelta
 import torch
 # import torchvision as thv
+
 import numpy as np
 import sys
 import re
@@ -140,13 +141,6 @@ def rect2tup(rect):
         map(lambda x: x * 2,
             [rect['x'], rect['y'], rect['width'], rect['height']]))
 
-
-def data_iter(data, batch_size):
-    i = int(batch_size)
-
-    while i < len(data):
-        yield data[i - batch_size:i]
-        i += batch_size
 
 
 # cnt = 0

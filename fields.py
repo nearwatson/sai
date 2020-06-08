@@ -30,9 +30,9 @@ class Semantic():
     special token such as sos, eos and etc
     """
     def __init__(self, ):
+        self.PAD_TOKEN = '<pad>'
         self.INIT_TOKEN = '<sos>'
         self.EOS_TOKEN = '<eos>'
-        self.PAD_TOKEN = '<pad>'
         self.UNK_TOKEN = '<unk>'
 
 
