@@ -127,7 +127,7 @@ field_process('hello Hebe, where is your husband? \t \n')
 
 
 
-def _make_vocab(json_file, vocab_path = args.vocab_path, thres=2):
+def _make_vocab(json_file, vocab_path=args.vocab_path, thres=2, level='word'):
     word_dict = {}
     with open(json_file, "r", encoding='utf-8') as f:
         for l in f.readlines():
