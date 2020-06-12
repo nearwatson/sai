@@ -1,14 +1,10 @@
-import pyautogui
-import time
-from datetime import datetime
-from datetime import timedelta
+# import pyautogui
+import os, re, sys, time
+from datetime import datetime, timedelta
 import torch
 # import torchvision as thv
 
 import numpy as np
-import sys
-import re
-import os
 import shutil
 import cv2
 
