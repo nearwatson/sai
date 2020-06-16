@@ -1,4 +1,7 @@
 {
+<<<<<<< HEAD
     "python.formatting.provider": "yapf",
+=======
+>>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
     "python.pythonPath": "/Users/neal/anaconda3/envs/geo/bin/python"
 }
