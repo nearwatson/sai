@@ -1,10 +1,23 @@
+<<<<<<< HEAD
 # import pyautogui
 import os, re, sys, time
 from datetime import datetime, timedelta
+=======
+import pyautogui
+import time
+from datetime import datetime
+from datetime import timedelta
+>>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
 import torch
 # import torchvision as thv
 
 import numpy as np
+<<<<<<< HEAD
+=======
+import sys
+import re
+import os
+>>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
 import shutil
 import cv2
 
@@ -148,4 +161,8 @@ def rect2tup(rect):
 
 # o = gen(data, 100)
 
+<<<<<<< HEAD
 # next(o)
+=======
+# next(o)
+>>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
