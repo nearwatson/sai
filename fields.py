@@ -5,9 +5,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-
 from nlp_db import nlp_db
-
 from utils import *
 
 
@@ -85,13 +83,7 @@ class Vocab():
 
 
 vocab = Vocab(semantic)
-vocab.load('./data/multi30k/vocab.txt')
-
-
-
-# vocab.vocab_sys, vocab.vocab_dict
-# vocab['self']    2731
-
+# vocab.load('./data/multi30k/vocab.txt')
 
 class Field():
     def __init__(self, vocab, preprocess=None, postprocess=None):
@@ -121,13 +113,12 @@ class Field():
         return self.postprocessing(self.num_word_id(self.preprocessing(x)))
 
 
-field_process = Field(vocab, preprocess=lambda sent: sent.strip().split())
-
-field_process('hello Hebe, where is your husband? \t \n')
-
+field_process = Field(vocab, preprocess = lambda sent: sent.strip().split())
+# field_process('hello Hebe, where is your husband? \t \n')
 
 
-def _make_vocab(json_file, vocab_path=args.vocab_path, thres=2, level='word'):
+
+def _make_vocab(json_file, vocab_path, thres=2, level='word'):
     word_dict = {}
     with open(json_file, "r", encoding='utf-8') as f:
         for l in f.readlines():
@@ -146,3 +137,33 @@ def _make_vocab(json_file, vocab_path=args.vocab_path, thres=2, level='word'):
                 print(k, file=f)
 
 # _make_vocab(json_file, vocab_path = args.vocab_path, thres=2)
+
+
+def _make_chatbot_vocab(file, vocab_path, thres = 2):
+    word_dict = {}
+    with open(file, "r", encoding='utf-8') as f:
+        cnt = 0
+        for l in f.readlines():
+            for token in list(jieba.cut(l.strip().replace('\t',""))):
+                if token not in word_dict:
+                    word_dict[token] = 0
+                else:
+                    word_dict[token] += 1
+
+    if not os.path.isfile(vocab_path):
+        open(vocab_path,'a').close()
+
+    with open(vocab_path, 'w') as f:
+        for k, v in word_dict.items():
+            if v > thres:
+                print(k, file=f)
+                
+                
+def get_max_sent_len(file):
+    with open(file, "r", encoding='utf-8') as f:
+        maxlen, sent_count = 0, 0
+        for l in f.readlines():
+            maxlen = max([maxlen, max([len(sent) for sent in l.split()])])
+            sent_count += 1
+    
+    return maxlen, sent_count

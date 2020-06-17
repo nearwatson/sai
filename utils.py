@@ -1,39 +1,13 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 # import pyautogui
 import os, re, sys, time
 from datetime import datetime, timedelta
-=======
-=======
->>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
-import pyautogui
-import time
-from datetime import datetime
-from datetime import timedelta
-<<<<<<< HEAD
->>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
-=======
->>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
+import cv2
 import torch
-# import torchvision as thv
+import shutil
+import torchvision as thv
 
 import numpy as np
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import sys
-import re
-import os
->>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
-=======
-import sys
-import re
-import os
->>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
-import shutil
-import cv2
-
-
+import pandas as pd
 
 def screen_monitor(sec = 60, replace = True):
 
@@ -163,7 +137,12 @@ def rect2tup(rect):
             [rect['x'], rect['y'], rect['width'], rect['height']]))
 
 
-
+def pathFiles(rel_path):
+    return [
+    os.path.join(os.path.abspath(rel_path),
+                 os.listdir(rel_path)[i])
+    for i in range(len(os.listdir(rel_path)))
+]
 # cnt = 0
 # for bh in gen(data, 100):
 #     cnt += 1
@@ -173,12 +152,3 @@ def rect2tup(rect):
 
 # o = gen(data, 100)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-# next(o)
-=======
-# next(o)
->>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
-=======
-# next(o)
->>>>>>> 996b3c85772bec68254d39e5f520dc2917e42bd0
